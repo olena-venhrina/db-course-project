@@ -32,4 +32,4 @@ jobs:
         run: dbdocs build lab-work-01/schema-venhrina.dbml --project "schema-venhrina"
         # Обов'язково вкажи правильний шлях до твого файлу
         # та назву проєкту на dbdocs.io
-        # оновлення для перевірки 
+        # оновлення для перевірки ++
