@@ -22,5 +22,5 @@ Ref: Categories.id < Products.category_id
 // Таблиця для тесту оновлення
 Table Test {
   id_test integer [pk, increment]
-  name_test varchar(5) [unique, not null]
+  name_test varchar(15) [unique, not null]
 }
