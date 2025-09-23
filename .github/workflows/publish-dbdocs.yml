@@ -1,0 +1,34 @@
+name: Publish DB Docs
+
+# Цей воркфлоу буде запускатись при кожному пуші у гілку 'main'
+on:
+  push:
+    branches:
+      - main # Можеш змінити на свою основну гілку, наприклад 'master'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest # Використовуємо віртуальну машину на Ubuntu
+
+    steps:
+      # 1. Клонуємо репозиторій, щоб отримати доступ до .dbml файлу
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Встановлюємо Node.js, який потрібен для роботи dbdocs
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Версія Node.js
+
+      # 3. Встановлюємо сам dbdocs CLI
+      - name: Install dbdocs
+        run: npm install -g dbdocs
+
+      # 4. Публікуємо документацію
+      - name: Build and publish dbdocs
+        env:
+          DBDOCS_TOKEN: ${{ secrets.DBDOCS_TOKEN }} # Використовуємо наш секретний токен
+        run: dbdocs build ./lab-work-01/schema-venhrina.dbml --project "schema-venhrina"
+        # Обов'язково вкажи правильний шлях до твого файлу
+        # та назву проєкту на dbdocs.io
