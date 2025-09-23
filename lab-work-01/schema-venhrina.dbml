@@ -1,1 +1,20 @@
+// Таблиця-довідник для категорій товарів
+Table Categories {
+  id integer [pk, increment] // Первинний ключ
+  name varchar(100) [unique, not null] // Назва категорії, унікальна і обов`язкова
+  description text // Опис категорії, необов`язковий
+}
 
+// Таблиця для товарів магазину
+Table Products {
+  id integer [pk, increment]
+  name varchar(255) [not null]
+  description text
+  price decimal(10, 2) [not null] // Використовуємо decimal для грошей
+  stock_quantity integer [not null, default: 0] // Кількість на складі
+  category_id integer [not null] // Зовнішній ключ для зв`язку з категорією
+}
+
+// Створюємо зв`язок один-до-багатьох
+// Одна Категорія може мати багато Товарів
+Ref: Categories.id < Products.category_id
