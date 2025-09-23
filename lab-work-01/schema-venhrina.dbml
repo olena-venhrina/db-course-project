@@ -18,3 +18,9 @@ Table Products {
 // Створюємо зв`язок один-до-багатьох
 // Одна Категорія може мати багато Товарів
 Ref: Categories.id < Products.category_id
+
+// Таблиця для тесту оновлення
+Table Test {
+  id_test integer [pk, increment]
+  name_test varchar(5) [unique, not null]
+}
