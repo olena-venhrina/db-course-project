@@ -29,6 +29,6 @@ jobs:
       - name: Build and publish dbdocs
         env:
           DBDOCS_TOKEN: ${{ secrets.DBDOCS_TOKEN }} # Використовуємо наш секретний токен
-        run: dbdocs build ./lab-work-01/schema-venhrina.dbml --project "schema-venhrina"
+        run: dbdocs build lab-work-01/schema-venhrina.dbml --project "schema-venhrina"
         # Обов'язково вкажи правильний шлях до твого файлу
         # та назву проєкту на dbdocs.io
